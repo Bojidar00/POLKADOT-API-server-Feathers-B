@@ -10,7 +10,8 @@ exports.BlockHashByNumber = class BlockHashByNumber {
   }
 
   async find (params) {
-    return [];
+    console.log(params);
+    return [params];
   }
 
   async get (id, params) {
