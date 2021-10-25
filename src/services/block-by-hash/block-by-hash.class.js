@@ -19,9 +19,10 @@ exports.BlockByHash = class BlockByHash {
       return Promise.all(data.map(current => this.create(current, params)));
     }
     console.log(data);
+    console.log(data.hash);
     console.log(params);
     console.log(params.hash);
-    return data;
+    return "ffffff";
   }
 
   async update (id, data, params) {
