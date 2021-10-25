@@ -20,6 +20,7 @@ exports.BlockByHash = class BlockByHash {
     }
     console.log(data);
     console.log(params);
+    console.log(params.hash);
     return data;
   }
 
