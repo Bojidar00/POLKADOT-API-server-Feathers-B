@@ -10,14 +10,12 @@ exports.BlockHashByNumber = class BlockHashByNumber {
   }
 
   async find (params) {
-    console.log(params);
-    return [params];
+    
+    return connectApi.then(api => api.rpc.chain.getBlockHash(params.num));
   }
 
   async get (id, params) {
-    console.log(params);
-    console.log(params.num);
-    return connectApi.then(api => api.rpc.chain.getBlockHash(params));
+    
   }
 
   async create (data, params) {
