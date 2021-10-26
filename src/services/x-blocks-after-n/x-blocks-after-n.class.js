@@ -9,8 +9,8 @@ exports.XBlocksAfterN = class XBlocksAfterN {
   }
 
   async find (params) {
-    const x = params.x;
-    const n = params.n;
+    const x = params.route.x;
+    const n = params.route.n;
     console.log(params);
     console.log(x);
     console.log(n);
