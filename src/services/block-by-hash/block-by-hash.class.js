@@ -1,4 +1,8 @@
 /* eslint-disable no-unused-vars */
+const apiConnection = require('../../nodeConnection')
+const connectApi = apiConnection.getNodeConnection().then((api) => {
+  return api;
+});
 exports.BlockByHash = class BlockByHash {
   constructor (options) {
     this.options = options || {};
@@ -15,14 +19,10 @@ exports.BlockByHash = class BlockByHash {
   }
 
   async create (data, params) {
-    if (Array.isArray(data)) {
-      return Promise.all(data.map(current => this.create(current, params)));
-    }
-    console.log(data);
-    console.log(data.hash);
-    console.log(params);
-    console.log(params.hash);
-    return "ffffff";
+   
+   
+    return connectApi.then(api => api.rpc.chain.getBlock(data.hash));
+   
   }
 
   async update (id, data, params) {
