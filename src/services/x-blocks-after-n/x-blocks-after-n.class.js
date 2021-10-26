@@ -11,8 +11,12 @@ exports.XBlocksAfterN = class XBlocksAfterN {
   async find (params) {
     const x = params.x;
     const n = params.n;
+    console.log(params);
+    console.log(x);
+    console.log(n);
+
         
-            return connectApi.then( async api => {
+            return await connectApi.then( async api => {
                 let i = 1;
                 let blocks = [];
                 
