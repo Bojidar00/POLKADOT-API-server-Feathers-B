@@ -1,9 +1,10 @@
 /* eslint-disable no-unused-vars */
-const apiConnection = require('../../nodeConnection')
-const connectApi = apiConnection.getNodeConnection().then((api) => {
-  return api;
-});
-exports.XBlocksAfterN = class XBlocksAfterN {
+const dbConnection = require('../../dbConnection')
+const connectDb = dbConnection.getDbConnection().then((db) => {
+  db.connect().then(console.log("Connected to PostgreSQL from Server"));
+  return db;
+});  
+exports.XTransactionsAfterNth = class XTransactionsAfterNth {
   constructor (options) {
     this.options = options || {};
   }
@@ -11,21 +12,9 @@ exports.XBlocksAfterN = class XBlocksAfterN {
   async find (params) {
     const x = params.route.x;
     const n = params.route.n;
-  
-
-        
-            return await connectApi.then( async api => {
-                let i = 1;
-                let blocks = [];
-                
-                while (i <= x)  {
-                    let tempBlock = await api.rpc.chain.getBlockHash(n-i);
-                    blocks.push(tempBlock);
-                    i++;
-                }
-        
-                return blocks;
-            })
+    
+    const result = await connectDb.query(`SELECT * FROM transactions WHERE id < ${n} AND id > ${n} - ${x} LIMIT ${x}`);
+    return result?.rows;
   }
 
   async get (id, params) {
