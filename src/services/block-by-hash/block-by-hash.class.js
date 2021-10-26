@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-const apiConnection = require('../../nodeConnection')
+const apiConnection = require('../../nodeConnection');
 const connectApi = apiConnection.getNodeConnection().then((api) => {
   return api;
 });

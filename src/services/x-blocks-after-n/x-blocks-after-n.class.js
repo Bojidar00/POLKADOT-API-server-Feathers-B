@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-const apiConnection = require('../../nodeConnection')
+const apiConnection = require('../../nodeConnection');
 const connectApi = apiConnection.getNodeConnection().then((api) => {
   return api;
 });
@@ -14,18 +14,18 @@ exports.XBlocksAfterN = class XBlocksAfterN {
   
 
         
-            return await connectApi.then( async api => {
-                let i = 1;
-                let blocks = [];
+    return await connectApi.then( async api => {
+      let i = 1;
+      let blocks = [];
                 
-                while (i <= x)  {
-                    let tempBlock = await api.rpc.chain.getBlockHash(n-i);
-                    blocks.push(tempBlock);
-                    i++;
-                }
+      while (i <= x)  {
+        let tempBlock = await api.rpc.chain.getBlockHash(n-i);
+        blocks.push(tempBlock);
+        i++;
+      }
         
-                return blocks;
-            })
+      return blocks;
+    });
   }
 
   async get (id, params) {
