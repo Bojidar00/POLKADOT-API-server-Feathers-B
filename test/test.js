@@ -46,7 +46,7 @@ describe('POST /api/node/blocks/hash', () => {
 
       const res = await axios.post('http://0.0.0.0:8080/api/node/blocks/hash', queryParam);
 
-      expect(res.status).toEqual(200);
+      expect(res.status).toEqual(201);
 
       expect(res).toSatisfyApiSpec();
   });

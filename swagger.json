@@ -152,7 +152,7 @@
           }
         },
         "responses": {
-          "201": {
+          "200": {
             "description": "Block by hash",
             "content": {
               "application/json": {
