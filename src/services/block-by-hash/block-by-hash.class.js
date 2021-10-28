@@ -20,8 +20,10 @@ exports.BlockByHash = class BlockByHash {
 
   async create (data, params) {
    
-   
+   try{
     return connectApi.then(api => api.rpc.chain.getBlock(data.hash));
+  } catch (error) {
+    return"Some error occurred!";}
    
   }
 

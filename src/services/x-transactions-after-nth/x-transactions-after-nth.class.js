@@ -10,11 +10,14 @@ exports.XTransactionsAfterNth = class XTransactionsAfterNth {
   }
 
   async find (params) {
+    try{
     const x = params.route.x;
     const n = params.route.n;
     
     const result = await connectDb.query(`SELECT * FROM transactions WHERE id < ${n} AND id > ${n} - ${x} LIMIT ${x}`);
     return result?.rows;
+  } catch (error) {
+    return"Some error occurred!";}
   }
 
   async get (id, params) {

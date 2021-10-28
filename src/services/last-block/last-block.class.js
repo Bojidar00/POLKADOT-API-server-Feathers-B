@@ -10,7 +10,10 @@ exports.LastBlock = class LastBlock {
   }
 
   async find (params) {
+    try{
     return await connectApi.then(api => api.rpc.chain.getBlock());
+  } catch (error) {
+    res ="Some error occurred!";}
   }
 
   async get (id, params) {

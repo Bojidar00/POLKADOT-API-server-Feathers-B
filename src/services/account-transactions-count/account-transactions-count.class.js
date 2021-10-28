@@ -10,11 +10,14 @@ exports.AccountTransactionsCount = class AccountTransactionsCount {
   }
 
   async find (params) {
+    try{
     const address = params.address;
 
             
     const result = await connectDb.query(`SELECT COUNT(*) AS count FROM transactions WHERE sender='${address}' OR recipient='${address}'`);
     return result?.rows;
+  } catch (error) {
+    return"Some error occurred!";}
   }
 
   async get (id, params) {

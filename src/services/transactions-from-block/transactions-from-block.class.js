@@ -20,11 +20,14 @@ exports.TransactionsFromBlock = class TransactionsFromBlock {
   }
 
   async create (data, params) {
+    try{
     const hash = data.hash;
 
             
             const result = await connectDb.query(`SELECT * FROM transactions WHERE block_hash='${hash}'`);
             return result?.rows;
+          } catch (error) {
+            return"Some error occurred!";}
   }
 
   async update (id, data, params) {

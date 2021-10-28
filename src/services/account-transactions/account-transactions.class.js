@@ -10,11 +10,14 @@ exports.AccountTransactions = class AccountTransactions {
   }
 
   async find (params) {
+    try{
     const address = params.address;
 
             
             const result = await connectDb.query(`SELECT * FROM transactions WHERE recipient='${address}' OR sender='${address}'`);
             return result?.rows;
+          } catch (error) {
+            return"Some error occurred!";}
   }
 
   async get (id, params) {

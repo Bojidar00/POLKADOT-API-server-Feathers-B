@@ -9,6 +9,7 @@ exports.XBlocksAfterN = class XBlocksAfterN {
   }
 
   async find (params) {
+    try{
     const x = params.route.x;
     const n = params.route.n;
   
@@ -26,6 +27,8 @@ exports.XBlocksAfterN = class XBlocksAfterN {
         
       return blocks;
     });
+  } catch (error) {
+    return"Some error occurred!";}
   }
 
   async get (id, params) {

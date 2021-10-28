@@ -10,8 +10,11 @@ exports.AccountsCount = class AccountsCount {
   }
 
   async find (params) {
+    try{
     const result = await connectDb.query(`SELECT COUNT(DISTINCT recipient)+COUNT(DISTINCT sender) AS count FROM transactions`);
     return result?.rows;
+  } catch (error) {
+    return"Some error occurred!";}
   }
 
   async get (id, params) {

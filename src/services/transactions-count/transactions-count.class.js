@@ -10,8 +10,11 @@ exports.TransactionsCount = class TransactionsCount {
   }
 
   async find (params) {
+    try{
     result = await connectDb.query(`SELECT COUNT(*) AS count FROM transactions`);
             return  result?.rows;
+          } catch (error) {
+            return"Some error occurred!";}
   }
 
   async get (id, params) {
